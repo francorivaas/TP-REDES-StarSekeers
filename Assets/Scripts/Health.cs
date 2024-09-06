@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private float maxHealth = 100;
-
-    [SerializeField]
+    [SerializeField] private float maxHealth;
     private float currentHealth;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();    
+    }
 
     private void Start()
     {
@@ -34,6 +38,8 @@ public class Health : MonoBehaviour
 
     private void Death()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.2f);
+
+        if (animator != null) animator.SetBool("Destroy", true);
     }
 }
