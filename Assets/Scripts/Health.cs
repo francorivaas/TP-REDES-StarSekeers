@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private int maxHealth = 100;
+    private float maxHealth = 100;
 
     [SerializeField]
-    private int currentHealth;
+    private float currentHealth;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour
         } 
     }
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
     }

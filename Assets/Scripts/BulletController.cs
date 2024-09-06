@@ -9,6 +9,9 @@ public class BulletController : MonoBehaviour
     private Rigidbody2D body;
     public float force;
     private float lifeTime = 3;
+    
+    [SerializeField]
+    private float damage;
 
     private void Start()
     {
@@ -28,7 +31,16 @@ public class BulletController : MonoBehaviour
         if (lifeTime <= 0)
         {
             Destroy(gameObject);
+        }   
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            collision.GetComponent<Health>().TakeDamage(damage);
+            Destroy(gameObject);
         }
-            
     }
 }
