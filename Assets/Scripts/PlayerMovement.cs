@@ -8,13 +8,18 @@ public class PlayerMovement : MonoBehaviour
     public float movSpeed;
     private float speedX, speedY;
     Rigidbody2D rb;
-
+    private Camera camera;
     private PhotonView pv;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        pv = GetComponent<PhotonView>();        
+        pv = GetComponent<PhotonView>(); 
+        camera = GetComponentInChildren<Camera>();
+    }
+    private void Start()
+    {
+        camera.gameObject.SetActive(pv.IsMine);
     }
 
     void Update()
@@ -31,6 +36,25 @@ public class PlayerMovement : MonoBehaviour
             Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
             transform.up = direction;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (pv.IsMine && collision.transform.CompareTag("Coin"))
+        {
+            PhotonView photonView = PhotonView.Get(this);
+            photonView.RPC("CollectCoin", RpcTarget.AllBuffered, collision.gameObject.GetComponent<PhotonView>().ViewID);
+        }
+    }
+
+    [PunRPC]
+    void CollectCoin(int coinViewID)
+    {
+        PhotonView coinPhotonView = PhotonView.Find(coinViewID);
+        if (coinPhotonView != null)
+        {
+            PhotonNetwork.Destroy(coinPhotonView.gameObject);
+            GameManager.instance.AddCoinToPool();
         }
     }
 }

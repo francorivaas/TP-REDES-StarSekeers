@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviourPunCallbacks
 {
-    public Button createButton;
-    public Button joinButton;
-    public TMPro.TMP_InputField createInput;
-    public TMPro.TMP_InputField joinInput;
+    [SerializeField] private Button createButton;
+    [SerializeField] private Button joinButton;
+    [SerializeField] private TMPro.TMP_InputField createInput;
+    [SerializeField] private TMPro.TMP_InputField joinInput;
 
     private void Awake()
     {
