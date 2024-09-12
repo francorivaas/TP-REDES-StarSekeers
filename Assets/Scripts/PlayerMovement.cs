@@ -8,20 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public float movSpeed;
     private float speedX, speedY;
     Rigidbody2D rb;
-    private Camera camera;
     private PhotonView pv;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         pv = GetComponent<PhotonView>(); 
-        camera = GetComponentInChildren<Camera>();
     }
-    private void Start()
-    {
-        camera.gameObject.SetActive(pv.IsMine);
-    }
-
+   
     void Update()
     {
         if (pv.IsMine)
