@@ -9,6 +9,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
     [SerializeField] private Button joinButton;
     [SerializeField] private TMPro.TMP_InputField createInput;
     [SerializeField] private TMPro.TMP_InputField joinInput;
+    [SerializeField] private TMPro.TMP_Text feedbackText; // Para mostrar mensajes de error
 
     private void Awake()
     {
@@ -37,5 +38,24 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Gameplay");
+    }
+    //Sobrescribir OnJoinRoomFailed para manejar los errores al unirse a una sala
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        string errorMessage;
+        switch (returnMessage)
+        {
+            case ErrorCode.GameFull:
+                errorMessage = "La sala está llena. Por favor, intenta unirte a otra sala.";
+                break;
+            case ErrorCode.GameDoesNotExist:
+                errorMessage = "La sala no existe. Verifica el nombre de la sala o crea una nueva.";
+                break;
+            default:
+                errorMessage = $"Error al unirse a la sala: {message} (Código de error: {returnCode})";
+                break;
+        }
+        Debug.LogError(errorMessage);
+        if (feedbackText != null) feedbackText.text = errorMessage;
     }
 }
