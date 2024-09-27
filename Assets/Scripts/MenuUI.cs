@@ -43,16 +43,16 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         string errorMessage;
-        switch (returnMessage)
+        switch (returnCode)
         {
             case ErrorCode.GameFull:
-                errorMessage = "La sala est· llena. Por favor, intenta unirte a otra sala.";
+                errorMessage = "La sala est√° llena. Por favor, intenta unirte a otra sala.";
                 break;
             case ErrorCode.GameDoesNotExist:
                 errorMessage = "La sala no existe. Verifica el nombre de la sala o crea una nueva.";
                 break;
             default:
-                errorMessage = $"Error al unirse a la sala: {message} (CÛdigo de error: {returnCode})";
+                errorMessage = $"Error al unirse a la sala: {message} (C√≥digo de error: {returnCode})";
                 break;
         }
         Debug.LogError(errorMessage);
