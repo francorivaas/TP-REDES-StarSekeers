@@ -13,6 +13,9 @@ public class Health : MonoBehaviour
     private float currentHealth;
     [SerializeField] private Image lifeBarFill;
     [SerializeField] private Image Borde;
+    [SerializeField] private Image Rombo1;
+    [SerializeField] private Image Rombo2;
+    [SerializeField] private Image Rombo3;
     private void Start()
     {
         currentHealth = maxHealth;
@@ -24,8 +27,15 @@ public class Health : MonoBehaviour
         lifeBarFill.fillAmount = healthPercentage;
         if (Input.GetKeyDown(KeyCode.Space)) TakeDamage(10);
         if (currentHealth <= 0) LifesMinus();
-        if (Lifes == 0) NoLifes = true;
+        if (Lifes == 2) Rombo3.gameObject.SetActive(false);
+        if (Lifes == 1) Rombo2.gameObject.SetActive(false);
+        if (Lifes == 0) 
+        {
+            NoLifes = true;
+            Rombo1.gameObject.SetActive(false);
+        }
         if (NoLifes) Death();
+        Debug.Log(currentHealth);
     }
 
     public void TakeDamage(float damage)
