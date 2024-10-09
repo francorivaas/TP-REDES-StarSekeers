@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 16259441333980432}
   - component: {fileID: 1715529271758860334}
   - component: {fileID: 4760380203611921421}
+  - component: {fileID: 8593328379432248330}
+  - component: {fileID: 5988553719431022977}
   m_Layer: 0
   m_Name: Rombo2
   m_TagString: Untagged
@@ -128,6 +130,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8593328379432248330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686167288543992453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9e73a3d3d64354eba4ac8d64f60982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5988553719431022977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686167288543992453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1259839198547799181
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +250,8 @@ GameObject:
   - component: {fileID: 891678651671785783}
   - component: {fileID: 323964702829588355}
   - component: {fileID: 3803432331176588714}
+  - component: {fileID: 7287551029535756193}
+  - component: {fileID: 3744938806154428484}
   m_Layer: 0
   m_Name: Rombo3
   m_TagString: Untagged
@@ -340,6 +368,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7287551029535756193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321988461217449592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9e73a3d3d64354eba4ac8d64f60982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3744938806154428484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321988461217449592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4689616836119851846
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +404,8 @@ GameObject:
   - component: {fileID: 8938745131395290834}
   - component: {fileID: 6699234594983035731}
   - component: {fileID: 4584005449247491338}
+  - component: {fileID: 6059632506047569317}
+  - component: {fileID: 7743615591741914989}
   m_Layer: 0
   m_Name: Rombo1
   m_TagString: Untagged
@@ -468,6 +522,30 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6059632506047569317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689616836119851846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9e73a3d3d64354eba4ac8d64f60982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7743615591741914989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689616836119851846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5464035955483880725
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +558,8 @@ GameObject:
   - component: {fileID: 2048865408333129426}
   - component: {fileID: 6289117423973639870}
   - component: {fileID: 7136050417828478097}
+  - component: {fileID: 2305887451302738606}
+  - component: {fileID: 314430007367385314}
   m_Layer: 5
   m_Name: Fondo
   m_TagString: Untagged
@@ -596,6 +676,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2305887451302738606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464035955483880725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9e73a3d3d64354eba4ac8d64f60982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &314430007367385314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464035955483880725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5951362352896674308
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +1008,8 @@ GameObject:
   - component: {fileID: 2638895749000530377}
   - component: {fileID: 9095388262681849280}
   - component: {fileID: 318065023091259776}
+  - component: {fileID: 1671119195105478239}
+  - component: {fileID: 9011476049311831649}
   m_Layer: 0
   m_Name: Borde
   m_TagString: Untagged
@@ -1020,3 +1126,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1671119195105478239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664694752267624923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9e73a3d3d64354eba4ac8d64f60982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9011476049311831649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664694752267624923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
