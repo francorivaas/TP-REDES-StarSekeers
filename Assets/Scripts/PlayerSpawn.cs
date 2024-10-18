@@ -23,6 +23,6 @@ public class PlayerSpawn : MonoBehaviour
     private void ChangeColor(int playerViewID, int playerIndex)
     {
         PhotonView targetPhotonView = PhotonView.Find(playerViewID);
-        if (targetPhotonView != null) targetPhotonView.gameObject.GetComponent<SpriteRenderer>().color = (playerIndex == 1) ? Color.red : Color.blue;
+        if (targetPhotonView != null) targetPhotonView.gameObject.GetComponentInChildren<SpriteRenderer>().color = (playerIndex == 1) ? Color.blue : Color.red;
     }
 }
