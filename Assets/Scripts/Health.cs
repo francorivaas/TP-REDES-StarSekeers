@@ -35,7 +35,6 @@ public class Health : MonoBehaviour
             Rombo1.gameObject.SetActive(false);
         }
         if (NoLifes) Death();
-        Debug.Log(currentHealth);
     }
 
     public void TakeDamage(float damage)

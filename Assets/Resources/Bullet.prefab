@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8583737584721784356}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 5
   damage: 10
+  scoreManager: {fileID: 7741996076906582141, guid: d8e966fdaf1f5674a8ad996a2e48747b, type: 3}
 --- !u!50 &4524965274476874506
 Rigidbody2D:
   serializedVersion: 4
