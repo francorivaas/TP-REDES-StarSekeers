@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class BulletController : MonoBehaviour
 {
     private Vector3 mousePosition;
@@ -44,13 +44,13 @@ public class BulletController : MonoBehaviour
         {
             collision.GetComponent<Health>().TakeDamage(damage);
             scoreManager.AddScore("Enemy", 1);
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
 
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             scoreManager.AddScore("Obstacle", 1);
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class ShootController : MonoBehaviour
 {
     private Camera mainCamera;
@@ -12,7 +12,12 @@ public class ShootController : MonoBehaviour
     private float timer;
     public float timeBetweenFire;
     private SpriteRenderer spriteRenderer;
+    private PhotonView pv;
 
+    private void Awake()
+    {
+        pv = GetComponent<PhotonView>();
+    }
     private void Start()
     {
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -35,10 +40,10 @@ public class ShootController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0) && canFire)
+        if (Input.GetMouseButton(0) && canFire && pv.IsMine)
         {
             canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
         }
     }
 }
