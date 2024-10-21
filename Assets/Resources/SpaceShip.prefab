@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6629688487414856408}
   - component: {fileID: 9051229666253542375}
   - component: {fileID: 174577258520176361}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 4760380203611921421}
   - component: {fileID: 8593328379432248330}
   - component: {fileID: 5988553719431022977}
+  - component: {fileID: 8587826244279785128}
   m_Layer: 0
   m_Name: Rombo2
   m_TagString: Untagged
@@ -310,6 +311,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8587826244279785128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686167288543992453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1259839198547799181
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +343,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4425434292713062439}
   - component: {fileID: 2198434235390035603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BulletTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,6 +431,7 @@ GameObject:
   - component: {fileID: 3803432331176588714}
   - component: {fileID: 7287551029535756193}
   - component: {fileID: 3744938806154428484}
+  - component: {fileID: 7120659863771412869}
   m_Layer: 0
   m_Name: Rombo3
   m_TagString: Untagged
@@ -548,6 +572,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7120659863771412869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4321988461217449592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4689616836119851846
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +608,7 @@ GameObject:
   - component: {fileID: 4584005449247491338}
   - component: {fileID: 6059632506047569317}
   - component: {fileID: 7743615591741914989}
+  - component: {fileID: 1664476409616068781}
   m_Layer: 0
   m_Name: Rombo1
   m_TagString: Untagged
@@ -702,6 +749,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1664476409616068781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689616836119851846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5464035955483880725
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +784,7 @@ GameObject:
   - component: {fileID: 6289117423973639870}
   - component: {fileID: 2305887451302738606}
   - component: {fileID: 314430007367385314}
+  - component: {fileID: 1340099708644794050}
   m_Layer: 5
   m_Name: Fondo
   m_TagString: Untagged
@@ -803,6 +873,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1340099708644794050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464035955483880725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5951362352896674308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1101,7 @@ GameObject:
   - component: {fileID: 5198203798409565162}
   - component: {fileID: 544124387051999233}
   - component: {fileID: 1656295042750222374}
+  - component: {fileID: 5454960965696982407}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1099,6 +1192,28 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5454960965696982407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395585987449084118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8283666010641289448
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1226,7 @@ GameObject:
   - component: {fileID: 3872782858370753074}
   - component: {fileID: 6050095196960984603}
   - component: {fileID: 6695677700146245746}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RotatePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1220,6 +1335,7 @@ GameObject:
   - component: {fileID: 318065023091259776}
   - component: {fileID: 1671119195105478239}
   - component: {fileID: 9011476049311831649}
+  - component: {fileID: 8145350073706534555}
   m_Layer: 0
   m_Name: Borde
   m_TagString: Untagged
@@ -1360,3 +1476,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520565f620c5913469ba636356ca2dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8145350073706534555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664694752267624923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
