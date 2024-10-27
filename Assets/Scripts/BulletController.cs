@@ -50,6 +50,7 @@ public class BulletController : MonoBehaviour
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
             scoreManager.AddScore("Obstacle", 1);
+            collision.gameObject.GetComponent<Obstacle>().DestroyObstacle();
             PhotonNetwork.Destroy(gameObject);
         }
     }

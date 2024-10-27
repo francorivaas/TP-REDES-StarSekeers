@@ -21,8 +21,13 @@ public class Obstacle : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-                Destroy(gameObject);
+                DestroyObstacle();
             }
         }
+    }
+
+    public void DestroyObstacle()
+    {
+        Destroy(gameObject);
     }
 }
