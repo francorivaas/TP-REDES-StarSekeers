@@ -39,6 +39,11 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - ChangeColor
+  - CollectCoin
+  - RPC_Death
+  - RPC_LifesMinus
+  - RPC_TakeDamage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0

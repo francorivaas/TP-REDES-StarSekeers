@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class BulletController : MonoBehaviour
 {
     private Vector3 mousePosition;
@@ -13,8 +13,11 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private float damage;
 
+    [SerializeField] private ScoreManager scoreManager;
+
     private void Start()
     {
+        scoreManager = FindObjectOfType<ScoreManager>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         body = GetComponent<Rigidbody2D>();
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
@@ -37,10 +40,17 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
-            Destroy(gameObject);
+            scoreManager.AddScore("Enemy", 1);
+            PhotonNetwork.Destroy(gameObject);
+        }
+
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            scoreManager.AddScore("Obstacle", 1);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }
