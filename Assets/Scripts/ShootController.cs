@@ -7,12 +7,14 @@ public class ShootController : MonoBehaviour
     private Camera mainCamera;
     private Vector3 mousePosition;
     public GameObject bullet;
+    public GameObject specialBullet;
     public Transform bulletTransform;
     public bool canFire;
     private float timer;
     public float timeBetweenFire;
     private SpriteRenderer spriteRenderer;
     private PhotonView pv;
+    public PowerBar powerBar;
 
     private void Awake()
     {
@@ -44,6 +46,11 @@ public class ShootController : MonoBehaviour
         {
             canFire = false;
             PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+        }
+        if (Input.GetMouseButton(1) && powerBar.IsPowerReady() && pv.IsMine)
+        {
+            PhotonNetwork.Instantiate(specialBullet.name, bulletTransform.position, Quaternion.identity);
+            powerBar.ResetPower();
         }
     }
 }
