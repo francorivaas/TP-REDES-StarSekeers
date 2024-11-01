@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 1468756263192060019}
   - component: {fileID: -6116310312422765611}
   - component: {fileID: 1779074061890916555}
+  - component: {fileID: 3979105651159406127}
   m_Layer: 3
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -1089,6 +1090,26 @@ CircleCollider2D:
   m_Offset: {x: 0.0047810376, y: -0.076496966}
   serializedVersion: 2
   m_Radius: 0.26453686
+--- !u!114 &3979105651159406127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951362352896674308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e0a07b258883e48880408d70d04c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeBarFill: {fileID: 9095388262681849280}
+  spaceship: {fileID: 202213134007595500}
+  Borde: {fileID: 9095388262681849280}
+  Rombo1: {fileID: 4584005449247491338}
+  Rombo2: {fileID: 4760380203611921421}
+  Rombo3: {fileID: 3803432331176588714}
+  Fondo: {fileID: 6289117423973639870}
+  Pointer: {fileID: 1259839198547799181}
 --- !u!1 &6395585987449084118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1285,7 @@ MonoBehaviour:
   bullet: {fileID: 7107402974133566198, guid: 2cab43e7d39141d49b62b3c6941fe7e4, type: 3}
   bulletTransform: {fileID: 4425434292713062439}
   canFire: 1
+  doubleShoot: 0
   timeBetweenFire: 0.3
 --- !u!114 &6050095196960984603
 MonoBehaviour:

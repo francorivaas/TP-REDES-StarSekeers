@@ -28,7 +28,7 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: 
+  DevRegion: sa
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
@@ -44,6 +44,8 @@ MonoBehaviour:
   - RPC_Death
   - RPC_LifesMinus
   - RPC_TakeDamage
+  - RPC_Heal
+  - RPC_HideShowPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
-  DevRegionSetOnce: 0
+  DevRegionSetOnce: 1

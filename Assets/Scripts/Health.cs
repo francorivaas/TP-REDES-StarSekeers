@@ -8,6 +8,9 @@ public class Health : MonoBehaviourPunCallbacks
     private float maxHealth = 100;
     public bool NoLifes = false;
     public int Lifes = 3;
+    private bool shield = false;
+    
+    public bool Shield { get => shield; set { shield = value; } }
 
     [SerializeField]
     private float currentHealth;
@@ -42,7 +45,9 @@ public class Health : MonoBehaviourPunCallbacks
     public void TakeDamage(float damage)
     {
         if (!pv.IsMine) return;
-        //Sincronizamos el daño con los demás jugadores usando un RPC
+
+        if (shield) return;
+        //Sincronizamos el daï¿½o con los demï¿½s jugadores usando un RPC
         pv.RPC("RPC_TakeDamage", RpcTarget.AllBuffered, damage);
     }
     [PunRPC]
@@ -63,7 +68,7 @@ public class Health : MonoBehaviourPunCallbacks
     private void LifesMinus()
     {
         if (!pv.IsMine) return;
-        //Sincronizamos la pérdidad de vida y reseteamos la salud
+        //Sincronizamos la pï¿½rdidad de vida y reseteamos la salud
         pv.RPC("RPC_LifesMinus", RpcTarget.AllBuffered);
         
     }
@@ -72,5 +77,18 @@ public class Health : MonoBehaviourPunCallbacks
     {
         Lifes -= 1;
         currentHealth = maxHealth;
+    }
+
+    public void HealUp()
+    {
+        if (!pv.IsMine) return;
+        
+        pv.RPC("RPC_Heal", RpcTarget.AllBuffered);
+    }
+    [PunRPC]
+    public void RPC_Heal()
+    {
+        currentHealth = maxHealth;
+        Lifes = 3;
     }
 }
