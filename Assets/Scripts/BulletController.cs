@@ -43,10 +43,10 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
-            scoreManager.AddScore("Enemy", 1);
+            scoreManager.AddScore("Player", 1);
             PhotonNetwork.Destroy(gameObject);
         }
 

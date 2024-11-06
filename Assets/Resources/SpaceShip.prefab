@@ -1652,7 +1652,7 @@ MonoBehaviour:
   bulletTransform: {fileID: 4425434292713062439}
   canFire: 1
   timeBetweenFire: 0.3
-  powerBar: {fileID: 0}
+  powerBar: {fileID: 4032020508249629131}
 --- !u!114 &6050095196960984603
 MonoBehaviour:
   m_ObjectHideFlags: 0
