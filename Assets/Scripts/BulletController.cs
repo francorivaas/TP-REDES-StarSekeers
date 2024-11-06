@@ -43,7 +43,7 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
             scoreManager.AddScore("Player", 1);
