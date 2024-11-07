@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 public class BulletController : MonoBehaviour
 {
+    public bool isSpecialBullet = false;
     private Vector3 mousePosition;
     private Camera mainCamera;
     private Rigidbody2D body;
@@ -12,7 +13,8 @@ public class BulletController : MonoBehaviour
     
     [SerializeField]
     private float damage;
-
+    [SerializeField]
+    private float specialDamageMultiplier = 2f;
     [SerializeField] private ScoreManager scoreManager;
 
     private void Start()
@@ -26,6 +28,7 @@ public class BulletController : MonoBehaviour
         body.velocity = new Vector2 (direction.x, direction.y).normalized * force;
         float rot = Mathf.Atan2 (rotation.x, rotation.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        if (isSpecialBullet) damage *= specialDamageMultiplier;
     }
 
     private void Update()
@@ -43,7 +46,7 @@ public class BulletController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             collision.GetComponent<Health>().TakeDamage(damage);
-            scoreManager.AddScore("Enemy", 1);
+            scoreManager.AddScore("Player", 1);
             PhotonNetwork.Destroy(gameObject);
         }
 
