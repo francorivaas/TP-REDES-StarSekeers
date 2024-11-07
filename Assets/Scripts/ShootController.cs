@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Unity.Mathematics;
+
 public class ShootController : MonoBehaviour
 {
     private Camera mainCamera;
@@ -9,10 +11,14 @@ public class ShootController : MonoBehaviour
     public GameObject bullet;
     public Transform bulletTransform;
     public bool canFire;
+    public bool doubleShoot = false;
     private float timer;
     public float timeBetweenFire;
     private SpriteRenderer spriteRenderer;
     private PhotonView pv;
+    
+    public bool DoubleShoot { get => doubleShoot; set { doubleShoot = value; } }
+    public float TimeBetweenFire { get => timeBetweenFire; set { timeBetweenFire = value; } }
 
     private void Awake()
     {
@@ -43,7 +49,17 @@ public class ShootController : MonoBehaviour
         if (Input.GetMouseButton(0) && canFire && pv.IsMine)
         {
             canFire = false;
-            PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+            if (doubleShoot)
+            {
+                // Aca debería instanciar dos balas, y rotar una 45° y la otra -45°
+                GameObject _bullet = PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+                _bullet.transform.Rotate(0,0,45);
+            }
+            else
+            {
+                PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+            }
+            
         }
     }
 }
