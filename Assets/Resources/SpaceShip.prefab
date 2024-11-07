@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: -6116310312422765611}
   - component: {fileID: 1779074061890916555}
   - component: {fileID: 3979105651159406127}
+  - component: {fileID: 693455950127580397}
   m_Layer: 3
   m_Name: SpaceShip
   m_TagString: Enemy
@@ -1420,6 +1421,22 @@ MonoBehaviour:
   Rombo3: {fileID: 3803432331176588714}
   Fondo: {fileID: 6289117423973639870}
   Pointer: {fileID: 1259839198547799181}
+--- !u!114 &693455950127580397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951362352896674308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6395585987449084118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,7 +1689,6 @@ MonoBehaviour:
   specialBullet: {fileID: 7107402974133566198, guid: a04ace4ad69b4f14a92a52fb015594a2, type: 3}
   bulletTransform: {fileID: 4425434292713062439}
   canFire: 1
-  doubleShoot: 0
   timeBetweenFire: 0.3
   powerBar: {fileID: 4032020508249629131}
 --- !u!114 &6050095196960984603

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4524965274476874506}
   - component: {fileID: 8583737584721784356}
   - component: {fileID: 987168157671644658}
+  - component: {fileID: 7564309735818943609}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -100,8 +101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98264ecd7777c874991aa46815e56896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSpecialBullet: 0
   force: 5
   damage: 10
+  specialDamageMultiplier: 2
   scoreManager: {fileID: 7741996076906582141, guid: d8e966fdaf1f5674a8ad996a2e48747b, type: 3}
 --- !u!50 &4524965274476874506
 Rigidbody2D:
@@ -111,7 +114,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7107402974133566198}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -183,7 +186,24 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 7564309735818943609}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7564309735818943609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7107402974133566198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
