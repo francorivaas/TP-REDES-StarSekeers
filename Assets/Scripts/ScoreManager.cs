@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Necesario para trabajar con UI
-
-public class ScoreManager : MonoBehaviour
+using Photon.Pun;
+public class ScoreManager : MonoBehaviourPun
 {
     // Diccionario para almacenar los puntos asociados a diferentes objetos
     private Dictionary<string, int> pointValues;
@@ -53,7 +53,7 @@ public class ScoreManager : MonoBehaviour
             {
                 player2Score += points;
             }
-
+            photonView.RPC("SyncScores", RpcTarget.All, player1Score, player2Score);
             // Actualiza los textos en la UI
             UpdateScoreUI();
 
@@ -88,5 +88,13 @@ public class ScoreManager : MonoBehaviour
         {
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
         }
+    }
+    // Método RPC para sincronizar los puntajes en todos los clientes
+    [PunRPC]
+    private void SyncScores(int newPlayer1Score, int newPlayer2Score)
+    {
+        player1Score = newPlayer1Score;
+        player2Score = newPlayer2Score;
+        UpdateScoreUI();
     }
 }
