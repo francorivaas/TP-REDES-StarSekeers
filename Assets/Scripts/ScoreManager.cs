@@ -14,6 +14,12 @@ public class ScoreManager : MonoBehaviour
     // Referencias al texto en la UI
     public Text player1ScoreText;
     public Text player2ScoreText;
+    private static ScoreManager instance;
+    void Awake() 
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     void Start()
     {

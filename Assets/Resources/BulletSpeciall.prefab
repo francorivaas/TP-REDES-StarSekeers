@@ -103,8 +103,9 @@ MonoBehaviour:
   isSpecialBullet: 1
   force: 5
   damage: 10
-  specialDamageMultiplier: 2
+  specialDamageMultiplier: 3
   scoreManager: {fileID: 7741996076906582141, guid: d8e966fdaf1f5674a8ad996a2e48747b, type: 3}
+  shooterID: 0
 --- !u!50 &4524965274476874506
 Rigidbody2D:
   serializedVersion: 4
@@ -113,14 +114,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7107402974133566198}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

@@ -45,11 +45,16 @@ public class ShootController : MonoBehaviour
         if (Input.GetMouseButton(0) && canFire && pv.IsMine)
         {
             canFire = false;
-            PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+            // Instanciamos la bala y obtenemos la referencia a su componente BulletController
+            GameObject newBullet = PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+            BulletController bulletController = newBullet.GetComponent<BulletController>();
+            bulletController.InitializeBullet(pv.Owner.ActorNumber); // Pasamos el ID del jugador que dispara
         }
         if (Input.GetMouseButton(1) && powerBar.IsPowerReady() && pv.IsMine)
         {
-            PhotonNetwork.Instantiate(specialBullet.name, bulletTransform.position, Quaternion.identity);
+            GameObject newSpecialBullet = PhotonNetwork.Instantiate(specialBullet.name, bulletTransform.position, Quaternion.identity);
+            BulletController specialBulletController = newSpecialBullet.GetComponent<BulletController>();
+            specialBulletController.InitializeBullet(pv.Owner.ActorNumber);
             powerBar.ResetPower();
         }
     }

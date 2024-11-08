@@ -16,6 +16,8 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     private float specialDamageMultiplier = 2f;
     [SerializeField] private ScoreManager scoreManager;
+    private PhotonView photonView;  // PhotonView para acceder al ID del jugador
+    public int shooterID;           // ID del jugador que disparó
 
     private void Start()
     {
@@ -30,7 +32,10 @@ public class BulletController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
         if (isSpecialBullet) damage *= specialDamageMultiplier;
     }
-
+    public void InitializeBullet(int shooterID)
+    {
+        this.shooterID = shooterID; // Almacenamos el ID del jugador que disparó la bala
+    }
     private void Update()
     {
         lifeTime -= Time.deltaTime;
@@ -42,19 +47,18 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.gameObject.CompareTag("Enemy"))
+        Health enemyHealth = collision.GetComponent<Health>();
+        if (enemyHealth != null)
         {
-            collision.GetComponent<Health>().TakeDamage(damage);
-            scoreManager.AddScore("Player", 1);
+            enemyHealth.TakeDamage(damage);
+            scoreManager.AddScore("Player" + shooterID, shooterID);
+            if (PhotonNetwork.IsMasterClient) PhotonNetwork.Destroy(gameObject);
 
-            if (PhotonNetwork.IsMasterClient) 
-                PhotonNetwork.Destroy(gameObject);
         }
 
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            scoreManager.AddScore("Obstacle", 1);
+            scoreManager.AddScore("Obstacle", shooterID);
             collision.gameObject.GetComponent<Obstacle>().DestroyObstacle();
             
             if (PhotonNetwork.IsMasterClient)
