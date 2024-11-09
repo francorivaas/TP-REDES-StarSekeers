@@ -52,7 +52,9 @@ public class BulletController : MonoBehaviour
         {
             enemyHealth.TakeDamage(damage);
             scoreManager.AddScore("Player" + shooterID, shooterID);
-            if (PhotonNetwork.IsMasterClient) PhotonNetwork.Destroy(gameObject);
+            
+            if (PhotonNetwork.IsMasterClient/* || photonView.IsMine*/) 
+                PhotonNetwork.Destroy(gameObject);
 
         }
 
@@ -61,7 +63,7 @@ public class BulletController : MonoBehaviour
             scoreManager.AddScore("Obstacle", shooterID);
             collision.gameObject.GetComponent<Obstacle>().DestroyObstacle();
             
-            if (PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.IsMasterClient/* || photonView.IsMine*/)
                 PhotonNetwork.Destroy(gameObject);
         }
     }

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Pun;
+
 public class Health : MonoBehaviourPunCallbacks
 {
     private float maxHealth = 100;
@@ -57,14 +59,30 @@ public class Health : MonoBehaviourPunCallbacks
     }
     private void Death()
     {
-        if (!pv.IsMine) return;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            SceneManager.LoadScene(3);
+        }
+
+        else
+        {
+            SceneManager.LoadScene(4);
+        }
+
+        //if (!pv.IsMine) return;
+        //{
+            
+        //}
+
         pv.RPC("RPC_Death", RpcTarget.AllBuffered);
     }
+
     [PunRPC]
     private void RPC_Death()
     {
         PhotonNetwork.Destroy(gameObject);
     }
+
     private void LifesMinus()
     {
         if (!pv.IsMine) return;
@@ -72,6 +90,7 @@ public class Health : MonoBehaviourPunCallbacks
         pv.RPC("RPC_LifesMinus", RpcTarget.AllBuffered);
         
     }
+
     [PunRPC]
     private void RPC_LifesMinus()
     {
