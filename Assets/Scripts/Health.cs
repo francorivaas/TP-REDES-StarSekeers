@@ -59,20 +59,16 @@ public class Health : MonoBehaviourPunCallbacks
     }
     private void Death()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (pv.IsMine)
         {
             SceneManager.LoadScene(3);
         }
 
-        else
+        else if (!pv.IsMine) 
         {
             SceneManager.LoadScene(4);
+            return;
         }
-
-        //if (!pv.IsMine) return;
-        //{
-            
-        //}
 
         pv.RPC("RPC_Death", RpcTarget.AllBuffered);
     }
@@ -88,7 +84,6 @@ public class Health : MonoBehaviourPunCallbacks
         if (!pv.IsMine) return;
         //Sincronizamos la p�rdidad de vida y reseteamos la salud
         pv.RPC("RPC_LifesMinus", RpcTarget.AllBuffered);
-        
     }
 
     [PunRPC]
@@ -104,6 +99,7 @@ public class Health : MonoBehaviourPunCallbacks
         
         pv.RPC("RPC_Heal", RpcTarget.AllBuffered);
     }
+
     [PunRPC]
     public void RPC_Heal()
     {
