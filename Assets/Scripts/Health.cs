@@ -74,16 +74,13 @@ public class Health : MonoBehaviourPunCallbacks
             Player otherPlayer = PhotonNetwork.PlayerListOthers[0];
             int otherPlayerActorNumber = otherPlayer.ActorNumber;
 
-            pv.RPC("RPC_SetGameOverState", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, playerState);
-
-            pv.RPC("RPC_SetVictoryState", RpcTarget.AllBuffered, otherPlayerActorNumber, playerState);
-
+            pv.RPC("RPC_SetState", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, playerState);
             pv.RPC("RPC_Death", RpcTarget.AllBuffered);
         }
     }
 
     [PunRPC]
-    private void RPC_SetGameOverState(int actorNumber, int state)
+    private void RPC_SetState(int actorNumber, int state)
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == actorNumber)
         {
