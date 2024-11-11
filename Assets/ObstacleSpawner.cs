@@ -46,4 +46,3 @@ public class ObstacleSpawner : MonoBehaviour
         Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
     }
 }
-
