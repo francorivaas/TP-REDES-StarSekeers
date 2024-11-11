@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6717182395969675565}
   - component: {fileID: 5191468546783514840}
   - component: {fileID: 6759823296754559780}
+  - component: {fileID: 2749034789529659564}
   m_Layer: 0
   m_Name: PowerUp Health
   m_TagString: PowerUp
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 547298995
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0, g: 1, b: 0.051297426, a: 1}
@@ -184,3 +185,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727fee7fabe20184185e3a84c8f0f768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2749034789529659564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4914874637027253981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04d895aba17e8c54492ac03cf0174a9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
