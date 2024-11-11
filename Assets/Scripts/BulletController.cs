@@ -55,6 +55,8 @@ public class BulletController : MonoBehaviour
             
             if (PhotonNetwork.IsMasterClient/* || photonView.IsMine*/) 
                 PhotonNetwork.Destroy(gameObject);
+            else if (!PhotonNetwork.IsMasterClient)
+                PhotonNetwork.Destroy(gameObject);
 
         }
 
@@ -64,6 +66,8 @@ public class BulletController : MonoBehaviour
             collision.gameObject.GetComponent<Obstacle>().DestroyObstacle();
             
             if (PhotonNetwork.IsMasterClient/* || photonView.IsMine*/)
+                PhotonNetwork.Destroy(gameObject);
+            else if (!PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Destroy(gameObject);
         }
     }
