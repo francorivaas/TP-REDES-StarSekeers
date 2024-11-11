@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class Health : MonoBehaviourPunCallbacks
 {
@@ -22,6 +23,9 @@ public class Health : MonoBehaviourPunCallbacks
     [SerializeField] private Image Rombo2;
     [SerializeField] private Image Rombo3;
     private PhotonView pv;
+
+    private int playerState = 0;
+
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -42,6 +46,11 @@ public class Health : MonoBehaviourPunCallbacks
             Rombo1.gameObject.SetActive(false);
         }
         if (NoLifes && pv.IsMine) Death();
+
+        //print(PhotonNetwork.LocalPlayer.ActorNumber); //1 desde Unity
+        //Player otherPlayer = PhotonNetwork.PlayerListOthers[0];
+        //int otherPlayerActorNumber = otherPlayer.ActorNumber;
+        //print(otherPlayerActorNumber);
     }
 
     public void TakeDamage(float damage)
@@ -61,16 +70,34 @@ public class Health : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
+            playerState = 2;
+            Player otherPlayer = PhotonNetwork.PlayerListOthers[0];
+            int otherPlayerActorNumber = otherPlayer.ActorNumber;
+
+            pv.RPC("RPC_SetGameOverState", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber, playerState);
+
+            pv.RPC("RPC_SetVictoryState", RpcTarget.AllBuffered, otherPlayerActorNumber, playerState);
+
+            pv.RPC("RPC_Death", RpcTarget.AllBuffered);
+        }
+    }
+
+    [PunRPC]
+    private void RPC_SetGameOverState(int actorNumber, int state)
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == actorNumber)
+        {
+            if (playerState == state)
+            {
+                SceneManager.LoadScene(4);
+            }
+        }
+
+        else if (PhotonNetwork.LocalPlayer.ActorNumber != actorNumber)
+        {
+            playerState = 1;
             SceneManager.LoadScene(3);
         }
-
-        else if (!pv.IsMine) 
-        {
-            SceneManager.LoadScene(4);
-            return;
-        }
-
-        pv.RPC("RPC_Death", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
