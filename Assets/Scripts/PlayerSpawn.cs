@@ -1,6 +1,7 @@
 using System;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class PlayerSpawn : MonoBehaviour
@@ -12,6 +13,8 @@ public class PlayerSpawn : MonoBehaviour
     [SerializeField] private float TimeToConnect = 60f;
     private float CurrentTimeWaiting = 0f;
     [SerializeField] private GameObject ErrorPopup;
+    [SerializeField] private GameObject PopUpButton;
+    [SerializeField] private Text ErrorTxt;
 
     private void Awake()
     {
@@ -53,6 +56,8 @@ public class PlayerSpawn : MonoBehaviour
                 {
                     ErrorPopup.SetActive(true);
                     Time.timeScale = 0;
+                    PopUpButton.SetActive(true);
+                    ErrorTxt.text = "Se agoto el tiempo de espera por un segundo jugador";
                 }
    
             }
