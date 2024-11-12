@@ -15,6 +15,7 @@ public class PowerUpDoubleShoot : MonoBehaviour, IPowerUp
         {
             if (collision.GetComponentInChildren<ShootController>() != null)
             {
+                print("colisiona double shoot");
                 _player = collision.gameObject.GetComponentInChildren<ShootController>();
                 Effect(_player.gameObject);
                 enable = false;

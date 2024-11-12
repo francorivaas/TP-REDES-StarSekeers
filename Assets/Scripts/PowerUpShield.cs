@@ -17,6 +17,7 @@ public class PowerUpShield : MonoBehaviour, IPowerUp
             Debug.Log(playerHealth);
             if (playerHealth != null)
             {
+                print("colisiona shield");
                 Effect(_player);
                 enable = false;
             }

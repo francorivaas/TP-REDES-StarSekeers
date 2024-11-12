@@ -7,6 +7,7 @@ public class PowerUpHealth : MonoBehaviour, IPowerUp
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Effect(collision.gameObject);
+        
     }
 
     public void Effect(GameObject player)
@@ -14,6 +15,7 @@ public class PowerUpHealth : MonoBehaviour, IPowerUp
         Health playerHealth = player.GetComponent<Health>();
         if (playerHealth != null)
         {
+            print("colisiona health");
             playerHealth.HealUp();
             Destroy(this.gameObject);
         }
