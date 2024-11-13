@@ -1,6 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviourPunCallbacks
@@ -9,6 +10,8 @@ public class MenuUI : MonoBehaviourPunCallbacks
     [SerializeField] private Button joinButton;
     [SerializeField] private TMPro.TMP_InputField createInput;
     [SerializeField] private TMPro.TMP_InputField joinInput;
+    [SerializeField] private GameObject ErrorPopUp;
+    [SerializeField] private Text ErrorTxt;
 
     private void Awake()
     {
@@ -37,5 +40,16 @@ public class MenuUI : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         PhotonNetwork.LoadLevel("Gameplay");
+    }
+
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        ErrorPopUp.SetActive(true);
+        ErrorTxt.text = message;
+    }
+
+    public void ClosePopUp()
+    {
+        ErrorPopUp.SetActive(false);
     }
 }
