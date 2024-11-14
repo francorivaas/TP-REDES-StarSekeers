@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 public class BulletController : MonoBehaviour
 {
-    public bool isSpecialBullet = false;
     private Vector3 mousePosition;
     private Camera mainCamera;
     private Rigidbody2D body;
@@ -13,8 +12,6 @@ public class BulletController : MonoBehaviour
     
     [SerializeField]
     private float damage;
-    [SerializeField]
-    private float specialDamageMultiplier = 2f;
     [SerializeField] private ScoreManager scoreManager;
     private PhotonView photonView;  // PhotonView para acceder al ID del jugador
     public int shooterID;           // ID del jugador que disparó
@@ -30,7 +27,6 @@ public class BulletController : MonoBehaviour
         body.velocity = new Vector2 (direction.x, direction.y).normalized * force;
         float rot = Mathf.Atan2 (rotation.x, rotation.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
-        if (isSpecialBullet) damage *= specialDamageMultiplier;
     }
     public void InitializeBullet(int shooterID)
     {
