@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
     [SerializeField] private TMPro.TMP_InputField createInput;
     [SerializeField] private TMPro.TMP_InputField joinInput;
     [SerializeField] private GameObject ErrorPopUp;
-    [SerializeField] private Text ErrorTxt;
+    [SerializeField] private TextMeshProUGUI ErrorTxt;
 
     private void Awake()
     {

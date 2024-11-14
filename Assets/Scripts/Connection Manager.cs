@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class ConnectionManager : MonoBehaviourPunCallbacks
     [SerializeField] private float TimeToConnect = 10f;
     private float CurrentTimeWaiting = 0f;
     [SerializeField] private GameObject ErrorPopUp;
-    [SerializeField] private Text ErrorTxt;
+    [SerializeField] private TextMeshProUGUI ErrorTxt;
 
     [SerializeField] private GameObject PopUpButton;
 

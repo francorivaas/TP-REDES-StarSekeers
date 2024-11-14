@@ -1,5 +1,6 @@
 using System;
 using Photon.Pun;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -14,7 +15,7 @@ public class PlayerSpawn : MonoBehaviour
     private float CurrentTimeWaiting = 0f;
     [SerializeField] private GameObject ErrorPopup;
     [SerializeField] private GameObject PopUpButton;
-    [SerializeField] private Text ErrorTxt;
+    [SerializeField] private TextMeshProUGUI ErrorTxt;
 
     private void Awake()
     {
