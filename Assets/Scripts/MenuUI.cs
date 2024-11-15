@@ -9,6 +9,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
 {
     [SerializeField] private Button createButton;
     [SerializeField] private Button joinButton;
+    [SerializeField] private Button exitButton;
     [SerializeField] private TMPro.TMP_InputField createInput;
     [SerializeField] private TMPro.TMP_InputField joinInput;
     [SerializeField] private GameObject ErrorPopUp;
@@ -18,6 +19,7 @@ public class MenuUI : MonoBehaviourPunCallbacks
     {
         createButton.onClick.AddListener(CreateRoom);
         joinButton.onClick.AddListener(JoinRoom);
+        exitButton.onClick.AddListener(Exit);
     }
 
     private void OnDestroy()
@@ -42,7 +44,10 @@ public class MenuUI : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel("Gameplay");
     }
-
+    private void Exit() 
+    {
+        Application.Quit();
+    }
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         ErrorPopUp.SetActive(true);
