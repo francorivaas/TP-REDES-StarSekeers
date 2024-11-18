@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,14 +11,17 @@ public class PlayerMovement : MonoBehaviour
     private PhotonView pv;
 
     [Header("Turbo Settings")]
-    public float turboMultiplier = 2f; 
-    public float turboDuration = 3f;   
-    public float turboCooldown = 5f;   
+    public float turboMultiplier = 2f;
+    public float turboDuration = 3f;
+    public float turboCooldown = 5f;
 
     private float turboTimer;
     private float cooldownTimer;
     private bool isTurboActive;
     private bool canUseTurbo = true;
+
+    [Header("UI Settings")]
+    public Slider turboSlider;
 
     private void Awake()
     {
@@ -25,12 +29,19 @@ public class PlayerMovement : MonoBehaviour
         pv = GetComponent<PhotonView>();
     }
 
-    void Update()
+    private void Start()
+    {
+        turboSlider.maxValue = turboDuration;
+        turboSlider.value = turboDuration;
+    }
+
+    private void Update()
     {
         if (pv.IsMine)
         {
             HandleMovement();
             HandleTurbo();
+            UpdateTurboSlider();
         }
     }
 
@@ -54,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ActivateTurbo();
         }
+
         if (isTurboActive)
         {
             turboTimer -= Time.deltaTime;
@@ -65,9 +77,11 @@ public class PlayerMovement : MonoBehaviour
         else if (!canUseTurbo)
         {
             cooldownTimer -= Time.deltaTime;
+
             if (cooldownTimer <= 0)
             {
                 canUseTurbo = true;
+                turboSlider.value = turboDuration;
             }
         }
     }
@@ -83,6 +97,19 @@ public class PlayerMovement : MonoBehaviour
     private void DeactivateTurbo()
     {
         isTurboActive = false;
+    }
+
+    private void UpdateTurboSlider()
+    {
+        if (isTurboActive)
+        {
+            turboSlider.value = turboTimer;
+        }
+        else if (!canUseTurbo)
+        {
+            float fillAmount = (turboCooldown - cooldownTimer) / turboCooldown;
+            turboSlider.value = fillAmount * turboDuration;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -105,4 +132,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+
 
