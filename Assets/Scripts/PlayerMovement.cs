@@ -10,9 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private PhotonView pv;
 
     [Header("Turbo Settings")]
-    public float turboMultiplier = 2f; // Multiplicador de velocidad al usar turbo
-    public float turboDuration = 3f;   // Duración del turbo en segundos
-    public float turboCooldown = 5f;   // Tiempo de recarga del turbo en segundos
+    public float turboMultiplier = 2f; 
+    public float turboDuration = 3f;   
+    public float turboCooldown = 5f;   
 
     private float turboTimer;
     private float cooldownTimer;
@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float currentSpeed = movSpeed;
 
-        // Si el turbo está activo, incrementar la velocidad
         if (isTurboActive)
         {
             currentSpeed *= turboMultiplier;
@@ -51,13 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleTurbo()
     {
-        // Activar turbo al presionar Shift si está disponible
         if (canUseTurbo && Input.GetKeyDown(KeyCode.LeftShift))
         {
             ActivateTurbo();
         }
-
-        // Si el turbo está activo, decrementar el temporizador
         if (isTurboActive)
         {
             turboTimer -= Time.deltaTime;
@@ -71,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             cooldownTimer -= Time.deltaTime;
             if (cooldownTimer <= 0)
             {
-                canUseTurbo = true; // Recargar turbo
+                canUseTurbo = true;
             }
         }
     }

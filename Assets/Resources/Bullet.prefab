@@ -101,10 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98264ecd7777c874991aa46815e56896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSpecialBullet: 0
   force: 5
   damage: 10
-  specialDamageMultiplier: 2
   scoreManager: {fileID: 7741996076906582141, guid: d8e966fdaf1f5674a8ad996a2e48747b, type: 3}
   shooterID: 0
 --- !u!50 &4524965274476874506
