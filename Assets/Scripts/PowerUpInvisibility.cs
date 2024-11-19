@@ -20,19 +20,10 @@ public class PowerUpInvisibility : MonoBehaviour, IPowerUp
     {
         if (enable)
         {
-            //_player = collision.gameObject;
-            //if (enable && _player.GetComponent<PlayerMovement>() != null)
-            //{
-            //    enable = false;
-            //    this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            //    Effect(_player);
-            //}
-
             if (collision.gameObject.GetComponent<PlayerMovement>() != null)
             {
                 _player = collision.gameObject;
                 print("colisiono invisibilidad");
-                _player.GetComponentInChildren<SpriteRenderer>().enabled = false;
                 Effect(collision.gameObject);
             }
    
@@ -42,22 +33,25 @@ public class PowerUpInvisibility : MonoBehaviour, IPowerUp
     public void Effect(GameObject player)
     {
         enabled = false;
-        if (!_player.GetPhotonView().AmOwner)
+        Debug.Log("Call RPC");
+        pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player);
+ //       if (!_player.GetPhotonView().AmOwner)
         {
             StartCoroutine(TikDown(duration));
-            _player.GetComponent<InvisibilityEffect>().InvisibilitySwitch(false);
+ //           pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player, true);
+          //  _player.GetComponent<InvisibilityEffect>().InvisibilitySwitch(false);
         }
 
-        //    pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player, enabled);
+//           pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player, enabled);
     }
     
     
 
-    [PunRPC]
-public void RPC_HideShowPlayer(bool enabled)
+    [PunRPC] 
+    public void RPC_HideShowPlayer(GameObject player)
 {
     Debug.Log("RPC");
-    _player.GetComponent<SpriteRenderer>().enabled = enabled;
+    player.GetComponent<InvisibilityEffect>().InvisibilitySwitch(false);
 }
 
     public IEnumerator TikDown(int time)

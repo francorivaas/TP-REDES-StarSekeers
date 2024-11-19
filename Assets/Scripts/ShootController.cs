@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class ShootController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PhotonView pv;
     public PowerBar powerBar;
+    public bool doubleShoot = false;
 
     private void Awake()
     {
@@ -45,10 +47,27 @@ public class ShootController : MonoBehaviour
         if (Input.GetMouseButton(0) && canFire && pv.IsMine)
         {
             canFire = false;
-            // Instanciamos la bala y obtenemos la referencia a su componente BulletController
-            GameObject newBullet = PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
-            BulletController bulletController = newBullet.GetComponent<BulletController>();
-            bulletController.InitializeBullet(pv.Owner.ActorNumber); // Pasamos el ID del jugador que dispara
+            if (doubleShoot)
+            {
+                // Instanciamos la bala y obtenemos la referencia a su componente BulletController
+                GameObject newBullet = PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+                BulletController bulletController = newBullet.GetComponent<BulletController>();
+                bulletController.InitializeBullet(pv.Owner.ActorNumber); // Pasamos el ID del jugador que dispara
+                bulletController.DegreesToRotate = 3;
+                
+                // Instanciamos la bala y obtenemos la referencia a su componente BulletController
+                GameObject SecondBullet = PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+                BulletController SecondbulletController = SecondBullet.GetComponent<BulletController>();
+                SecondbulletController.InitializeBullet(pv.Owner.ActorNumber); // Pasamos el ID del jugador que dispara
+                SecondbulletController.DegreesToRotate = -3;
+            }
+            else
+            {
+                // Instanciamos la bala y obtenemos la referencia a su componente BulletController
+                GameObject newBullet = PhotonNetwork.Instantiate(bullet.name, bulletTransform.position, Quaternion.identity);
+                BulletController bulletController = newBullet.GetComponent<BulletController>();
+                bulletController.InitializeBullet(pv.Owner.ActorNumber); // Pasamos el ID del jugador que dispara
+            }
         }
         if (Input.GetMouseButton(1) && powerBar.IsPowerReady() && pv.IsMine)
         {

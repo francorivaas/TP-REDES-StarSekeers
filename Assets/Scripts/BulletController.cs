@@ -9,12 +9,13 @@ public class BulletController : MonoBehaviour
     private Rigidbody2D body;
     public float force;
     private float lifeTime = 3;
+    public float DegreesToRotate = 0;
     
     [SerializeField]
     private float damage;
     [SerializeField] private ScoreManager scoreManager;
     private PhotonView photonView;  // PhotonView para acceder al ID del jugador
-    public int shooterID;           // ID del jugador que disparó
+    public int shooterID;           // ID del jugador que disparï¿½
 
     private void Start()
     {
@@ -27,10 +28,17 @@ public class BulletController : MonoBehaviour
         body.velocity = new Vector2 (direction.x, direction.y).normalized * force;
         float rot = Mathf.Atan2 (rotation.x, rotation.y) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
+        Rotate(DegreesToRotate);
     }
     public void InitializeBullet(int shooterID)
     {
-        this.shooterID = shooterID; // Almacenamos el ID del jugador que disparó la bala
+        this.shooterID = shooterID; // Almacenamos el ID del jugador que disparï¿½ la bala
+    }
+
+    public void Rotate(float num)
+    {
+        Vector3 direction = mousePosition - transform.position;
+        GetComponent<Rigidbody2D>().velocity = new Vector2 (direction.x, direction.y + num).normalized * force;
     }
     private void Update()
     {

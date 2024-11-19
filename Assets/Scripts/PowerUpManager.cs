@@ -30,7 +30,7 @@ public class PowerUpManager : MonoBehaviour
             if (isTrue)
             {
                 int randomValue = Random.Range(0, PowerUpsList.Count);
-            PhotonNetwork.Instantiate(PowerUpsList[randomValue].name, 
+                PhotonNetwork.Instantiate(PowerUpsList[randomValue].name, 
                     new Vector2(Random.Range(-4, 4), 
                         Random.Range(-8, 8)), Quaternion.identity);
             }

@@ -27,8 +27,8 @@ public class PowerUpDoubleShoot : MonoBehaviour, IPowerUp
     public void Effect(GameObject player)
     {
         this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-     //       _player.DoubleShoot = true;
-    //        _player.TimeBetweenFire = _player.GetComponent<ShootController>().TimeBetweenFire * 1.5f;
+            _player.doubleShoot = true;
+            _player.timeBetweenFire = _player.GetComponent<ShootController>().timeBetweenFire * 1.5f;
             StartCoroutine(TikDown(duration));
     }
 
@@ -41,8 +41,8 @@ public class PowerUpDoubleShoot : MonoBehaviour, IPowerUp
 
     public void OnTimeUp()
     {
-     //   _player.GetComponent<ShootController>().doubleShoot = false;
-    //    _player.GetComponent<ShootController>().TimeBetweenFire = _player.GetComponent<ShootController>().TimeBetweenFire / 1.5f;
+        _player.GetComponent<ShootController>().doubleShoot = false;
+        _player.GetComponent<ShootController>().timeBetweenFire = _player.GetComponent<ShootController>().timeBetweenFire / 1.5f;
 
         Destroy(this.gameObject);
     }

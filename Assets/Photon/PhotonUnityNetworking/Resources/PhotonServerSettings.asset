@@ -50,6 +50,7 @@ MonoBehaviour:
   - RPC_SetState
   - RPC_SetGameOverState
   - RPC_SetVictoryState
+  - RPC_UpdateShield
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

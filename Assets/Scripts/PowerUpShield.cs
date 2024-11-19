@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerUpShield : MonoBehaviour, IPowerUp
 {
     private bool enable = true;
-    private int duration = 5;
+    private int duration = 500;
     private GameObject _player;
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,7 +27,8 @@ public class PowerUpShield : MonoBehaviour, IPowerUp
 
     public void Effect(GameObject player)
     {
-        if (!_player.GetPhotonView().AmOwner)
+        
+//        if (!_player.GetPhotonView().AmOwner)
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             _player.GetComponent<Health>().Shield = true;

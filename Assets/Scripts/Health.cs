@@ -12,8 +12,11 @@ public class Health : MonoBehaviourPunCallbacks
     public bool NoLifes = false;
     public int Lifes = 3;
     private bool shield = false;
-    
-    public bool Shield { get => shield; set { shield = value; } }
+
+    public bool Shield
+    {
+        get => shield; set { pv.RPC("RPC_UpdateShield", RpcTarget.AllBuffered, value); }
+    }
 
     [SerializeField]
     private float currentHealth;
@@ -66,6 +69,13 @@ public class Health : MonoBehaviourPunCallbacks
     {
         currentHealth -= damage;
     }
+    
+    [PunRPC]
+    public void RPC_UpdateShield(bool HasShield)
+    {
+        shield = HasShield;
+    }
+
     private void Death()
     {
         if (pv.IsMine)
