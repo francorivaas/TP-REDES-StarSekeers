@@ -1781,6 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NoLifes: 0
   Lifes: 3
+  shield: 0
   currentHealth: 0
   lifeBarFill: {fileID: 6289117423973639870}
   Borde: {fileID: 9095388262681849280}

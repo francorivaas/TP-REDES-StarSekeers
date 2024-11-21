@@ -11,7 +11,7 @@ public class Health : MonoBehaviourPunCallbacks
     private float maxHealth = 100;
     public bool NoLifes = false;
     public int Lifes = 3;
-    private bool shield = false;
+    public bool shield = false;
 
     public bool Shield
     {
