@@ -21,6 +21,11 @@ public class MenuUI : MonoBehaviourPunCallbacks
         joinButton.onClick.AddListener(JoinRoom);
         exitButton.onClick.AddListener(Exit);
     }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C)) CreateRoom();
+        if (Input.GetKeyDown(KeyCode.J)) JoinRoom();
+    }
 
     private void OnDestroy()
     {
