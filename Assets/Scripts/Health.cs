@@ -96,14 +96,14 @@ public class Health : MonoBehaviourPunCallbacks
         {
             if (playerState == state)
             {
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(3);
             }
         }
 
         else if (PhotonNetwork.LocalPlayer.ActorNumber != actorNumber)
         {
             playerState = 1;
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
     }
 
