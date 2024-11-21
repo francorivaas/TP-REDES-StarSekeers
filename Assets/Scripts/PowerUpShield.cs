@@ -32,6 +32,7 @@ public class PowerUpShield : MonoBehaviour, IPowerUp
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             _player.GetComponent<Health>().Shield = true;
+            _player.GetComponent<ProgressBar>().Set(Color.blue, 2);
             StartCoroutine(TikDown(duration));
         }
     }
