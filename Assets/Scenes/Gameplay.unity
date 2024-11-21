@@ -1125,6 +1125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5951362352896674308, guid: 6d60b2c98b000c044ae5d03575798d78, type: 3}
+  playerSprites:
+  - {fileID: 21300000, guid: daa82ff60944eac45b1657e7717b69af, type: 3}
+  - {fileID: 21300000, guid: 84429308861010648ade0fc289acebcc, type: 3}
   TimeToConnect: 60
   ErrorPopup: {fileID: 1321987473}
   PopUpButton: {fileID: 2142363847}

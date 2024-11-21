@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class PlayerSpawn : MonoBehaviour
 {
     public GameObject playerPrefab;
+    public Sprite[] playerSprites;
     private GameObject player;
     private PhotonView pv;
     private bool HasToCheckForSecondPlayer;
@@ -27,18 +28,19 @@ public class PlayerSpawn : MonoBehaviour
             new Vector2(Random.Range(-4, 4), 
             Random.Range(-4, 4)), Quaternion.identity);
         int playerIndex = PhotonNetwork.PlayerList.Length;
-        pv.RPC("ChangeColor", RpcTarget.AllBuffered, player.GetComponent<PhotonView>().ViewID, playerIndex);
-        if (PhotonNetwork.PlayerList.Length == 1)
-        {
-            HasToCheckForSecondPlayer = true;
-        }
-        
+        pv.RPC("ChangeSprite", RpcTarget.AllBuffered, player.GetComponent<PhotonView>().ViewID, playerIndex);
+        if (PhotonNetwork.PlayerList.Length == 1) HasToCheckForSecondPlayer = true;
+
     }
     [PunRPC]
-    private void ChangeColor(int playerViewID, int playerIndex)
+    private void ChangeSprite(int playerViewID, int playerIndex)
     {
         PhotonView targetPhotonView = PhotonView.Find(playerViewID);
-        if (targetPhotonView != null) targetPhotonView.gameObject.GetComponentInChildren<SpriteRenderer>().color = (playerIndex == 1) ? Color.blue : Color.red;
+        if (targetPhotonView != null) 
+        {
+            SpriteRenderer spriteRenderer = targetPhotonView.gameObject.GetComponentInChildren<SpriteRenderer>();
+            if (spriteRenderer != null && playerIndex > 0 && playerIndex <= playerSprites.Length) spriteRenderer.sprite = playerSprites[playerIndex - 1];
+        }
     }
 
     private void Update()
