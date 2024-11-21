@@ -1,17 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Necesario para trabajar con UI
+using UnityEngine.UI;
 using Photon.Pun;
 public class ScoreManager : MonoBehaviourPun
 {
-    // Diccionario para almacenar los puntos asociados a diferentes objetos
     private Dictionary<string, int> pointValues;
 
-    // Puntuación de los jugadores
     private int player1Score;
     private int player2Score;
-
-    // Referencias al texto en la UI
     public Text player1ScoreText;
     public Text player2ScoreText;
     private static ScoreManager instance;
@@ -23,23 +19,19 @@ public class ScoreManager : MonoBehaviourPun
 
     void Start()
     {
-        // Inicializa los valores de puntos
         pointValues = new Dictionary<string, int>
         {
-            { "Player1", 100 }, // Puntos que obtiene el jugador 2 al golpear al jugador 1
-            { "Player2", 100 }, // Puntos que obtiene el jugador 1 al golpear al jugador 2
-            { "Obstacle", 50 },  // Puntos por destruir obstáculos
-            { "OtherObject", 25 } // Otros elementos de juego
+            { "Player1", 100 }, 
+            { "Player2", 100 }, 
+            { "Obstacle", 50 },
+            { "OtherObject", 25 } 
         };
 
         player1Score = 0;
         player2Score = 0;
-
-        // Actualiza los textos inicialmente
         UpdateScoreUI();
     }
 
-    // Método para añadir puntos según el objeto colisionado
     public void AddScore(string objectTag, int playerNumber)
     {
         if (pointValues.ContainsKey(objectTag))
@@ -54,7 +46,6 @@ public class ScoreManager : MonoBehaviourPun
                 player2Score += points;
             }
             photonView.RPC("SyncScores", RpcTarget.All, player1Score, player2Score);
-            // Actualiza los textos en la UI
             UpdateScoreUI();
 
             Debug.Log("Player " + playerNumber + " scored " + points + " points!");
@@ -65,7 +56,6 @@ public class ScoreManager : MonoBehaviourPun
         }
     }
 
-    // Método para obtener la puntuación actual de un jugador
     public int GetScore(int playerNumber)
     {
         if (playerNumber == 1)
@@ -75,8 +65,6 @@ public class ScoreManager : MonoBehaviourPun
 
         return 0;
     }
-
-    // Método para actualizar la UI con los puntajes actuales
     private void UpdateScoreUI()
     {
         if (player1ScoreText != null)
@@ -89,7 +77,7 @@ public class ScoreManager : MonoBehaviourPun
             player2ScoreText.text = "Player 2: " + player2Score.ToString();
         }
     }
-    // Método RPC para sincronizar los puntajes en todos los clientes
+
     [PunRPC]
     private void SyncScores(int newPlayer1Score, int newPlayer2Score)
     {

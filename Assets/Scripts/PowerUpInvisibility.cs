@@ -7,7 +7,7 @@ using Photon.Pun;
 public class PowerUpInvisibility : MonoBehaviour, IPowerUp
 {
     private bool enable = true;
-    private int duration = 1;
+    private int duration = 5;
     private GameObject _player;
     private PhotonView pv;
 
@@ -32,31 +32,19 @@ public class PowerUpInvisibility : MonoBehaviour, IPowerUp
 
     public void Effect(GameObject player)
     {
-        enabled = false;
         Debug.Log("Call RPC");
-        pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player);
- //       if (!_player.GetPhotonView().AmOwner)
-        {
-            StartCoroutine(TikDown(duration));
- //           pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player, true);
-          //  _player.GetComponent<InvisibilityEffect>().InvisibilitySwitch(false);
-        }
-
-//           pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, player, enabled);
+        enabled = false;
+        Color orange = new Color(1.0f, 0.64f, 0.0f, 255);
+        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        _player = player;
+        _player.GetComponent<InvisibilityEffect>().Called(false);
+        StartCoroutine(TikDown(duration));
+        _player.GetComponent<ProgressBar>().Set(orange, 1);
     }
-    
-    
-
-    [PunRPC] 
-    public void RPC_HideShowPlayer(GameObject player)
-{
-    Debug.Log("RPC");
-    player.GetComponent<InvisibilityEffect>().InvisibilitySwitch(false);
-}
 
     public IEnumerator TikDown(int time)
     {
-        print("llamo al tik");
+        print("llamo al tikDown");
         yield return new WaitForSeconds(time);
         OnTimeUp();
     }
@@ -64,9 +52,7 @@ public class PowerUpInvisibility : MonoBehaviour, IPowerUp
     public void OnTimeUp()
     {
         print("on time up");
-        enabled = false;
-        _player.GetComponent<InvisibilityEffect>().InvisibilitySwitch(true);
-//        pv.RPC("RPC_HideShowPlayer", RpcTarget.Others, _player, enabled);
+        _player.GetComponent<InvisibilityEffect>().Called(true);
         Destroy(this.gameObject);
     }
 }

@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class PowerUpShield : MonoBehaviour, IPowerUp
 {
-    private bool enable = true;
-    private int duration = 500;
+    public bool enable;
+    private int duration = 5;
     private GameObject _player;
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (enable)
@@ -32,8 +33,14 @@ public class PowerUpShield : MonoBehaviour, IPowerUp
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             _player.GetComponent<Health>().Shield = true;
+            _player.GetComponent<ProgressBar>().Set(Color.blue, 2);
             StartCoroutine(TikDown(duration));
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     public IEnumerator TikDown(int time)
@@ -46,6 +53,7 @@ public class PowerUpShield : MonoBehaviour, IPowerUp
     public void OnTimeUp()
     {
         _player.GetComponent<Health>().Shield = false;
+        print("a ver");
         Destroy(this.gameObject);
     }
 }
