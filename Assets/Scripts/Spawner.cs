@@ -1,14 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Photon.Pun;
 
 public class Spawner : MonoBehaviour
 {
+    
+    private PhotonView pv;
     [Header("Spawn Area")]
     public Vector2 spawnAreaMin;
     public Vector2 spawnAreaMax;
 
     [Header("Obstacle Settings")]
-    public List<GameObject> obstaclePrefabs; // Lista de prefabs de obstáculos
+    public List<GameObject> obstaclePrefabs; // Lista de prefabs de obstï¿½culos
     public float initialObstacleInterval = 2f;
     public float obstacleIntervalDecrement = 0.05f;
     public float minimumObstacleInterval = 0.5f;
@@ -24,6 +27,11 @@ public class Spawner : MonoBehaviour
 
     private float currentPowerUpInterval;
     private float powerUpTimer;
+    
+    private void Awake()
+    {
+        pv = GetComponent<PhotonView>();
+    }
 
     void Start()
     {
@@ -36,7 +44,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        // Control de spawn de obstáculos
+        // Control de spawn de obstï¿½culos
         obstacleTimer -= Time.deltaTime;
         if (obstacleTimer <= 0)
         {
@@ -62,12 +70,12 @@ public class Spawner : MonoBehaviour
         // Seleccionar un prefab aleatorio de la lista
         GameObject prefabToSpawn = prefabs[Random.Range(0, prefabs.Count)];
 
-        // Generar una posición aleatoria dentro del área definida
+        // Generar una posiciï¿½n aleatoria dentro del ï¿½rea definida
         float randomX = Random.Range(spawnAreaMin.x, spawnAreaMax.x);
         float randomY = Random.Range(spawnAreaMin.y, spawnAreaMax.y);
         Vector2 spawnPosition = new Vector2(randomX, randomY);
 
         // Instanciar el objeto
-        Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        PhotonNetwork.Instantiate(prefabToSpawn.name, spawnPosition, Quaternion.identity);
     }
 }
