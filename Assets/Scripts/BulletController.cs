@@ -57,8 +57,9 @@ public class BulletController : MonoBehaviour
             enemyHealth.TakeDamage(damage);
             scoreManager.AddScore("Player" + shooterID, shooterID);
             
-            if (PhotonNetwork.IsMasterClient/* || photonView.IsMine*/) 
+            if (PhotonNetwork.IsMasterClient) 
                 PhotonNetwork.Destroy(gameObject);
+
             else if (!PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Destroy(gameObject);
 
@@ -71,6 +72,7 @@ public class BulletController : MonoBehaviour
             
             if (PhotonNetwork.IsMasterClient/* || photonView.IsMine*/)
                 PhotonNetwork.Destroy(gameObject);
+
             else if (!PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Destroy(gameObject);
         }
